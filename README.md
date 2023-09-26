@@ -7,14 +7,18 @@ Calling the algorithm $O(1)$ may be slightly misleading, as it assumes multiplic
 # grecian
 A brute-force algorithm for [this](https://projectgeniusinc.com/grecian-computer/) puzzle I got for Christmas.
 
-I have no qualms about using brute-force, since this problem is not easily solvable in poly-time. A sketch of a proof follows.
+I don't feel so bad about using brute-force, since this problem is probably not solvable in poly-time. A sketch of a proof follows (everything is 0-indexed).
 
-Any Subset-Sum problem $L$ is reducible to Grecian Computer in polynomial time. For a set $S$ of size $n$ with a target sum $x$:
-- Create a Grecian Computer $GC$ with $n+1$ radii and rings and target sum also $x$
-- The base ring $R_n$ has radii $r_i$ with values all equal $0$, except $r_{i, n+1}=x-S_i$ and $r_{i,i}=S_i$ $\forall{i}\in[0,n]$, as well as one additional radius $r_{n+1}$ with all values equal $0$
-- Every other ring $R_i$ has all empty spaces except $r_{0,i}=S_i$
+We define a Grecian Computer with a target sum $x$ as a set $R$ of rings, where each ring is essentially a matrix. $R_{x,y,z}$ is the z-th value on the y-th radii of the x-th ring.
 
-Now, if $L$ has a solution $(x_0, x_1, ... x_i)$, $GC$ will have a solution attained by rotating rings $R_{x_i}$ clockwise $i+1$ times. If $GC$ has a solution then the top values along $r_{n+1}$ will provide a solution to $L$.
+Any Subset-Sum problem $L$ is reducible to Grecian Computer in polynomial time. For a vector of naturals $V$ of size $n$ with a target sum $x$:
+- Create a Grecian Computer $GC$ with $n+1$ radii and $n+1$ rings with target sum $x$.
+- The base ring $R_n+1$ has all values equal $0$, except $R_{n,n,i} = V_i$, and $R_{n,i,n} = x$ for $i \neq n$
+- Every other ring $R_i$ is all holes excluding $R_{i,0,i}$ which is $0$
+
+This transformation takes $O(n)$ time for each radii on a given ring, we have $O(n)$ radii for each ring, and we have $O(n)$ rings. Therefore in total, our transformation is $O(n^3)$, which is clearly polytime.
+
+Now, if we get a solution to the $GC$, our solution to $L$ is simply read off of radius $n$. Or formally, $V_i$ is in our solution to $L$ if $R_{i,n,i} \neq 0$ (is a hole, so the value on the base ring is visible).
 
 Therefore $GC$ satisfiable $\iff$ $L$ satisfiable. Since we reduce in polynomial time, and Subset-Sum is NP-Complete, if $GC\in{P}$ then $P=NP$. Thus finding a poly-time algorithm for a Grecian Computer proves $P=NP$, so I will not bother finding one for now.
 
