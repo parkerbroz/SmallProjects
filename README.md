@@ -1,3 +1,15 @@
+# tsaw
+This markdown file is a walkthrough of my current process in trading on [Kalshi's market for TSA check-ins](https://kalshi.com/markets/tsaw/).  
+
+The TLDR about what I did here is:
+- data collection through web scraping and API usage
+- data analysis to identify trends
+- machine learning to create a predictor
+- price estimation with some statistics
+- backtesting development for trading algorithm testing
+
+And I ended up with an EV of $1.17 for each $1 I traded!
+
 # constant-fib
 An $O(1)$ algorithm for finding the $n$-th Fibonacci number. This is an interesting application of some concepts I learned in my Abstract Linear Algebra course. Essentially, iterating from one Fibonacci number to the next can be represented as matrix multiplication. We can use some linear algebra tricks to make this computation
 very quick. 
