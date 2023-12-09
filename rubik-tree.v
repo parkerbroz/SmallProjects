@@ -420,9 +420,7 @@ from https://www.jaapsch.net/puzzles/cube2.htm.
 The i-th element of (perm_n n [solved'] init_tree) is the number of cubes
 which are reachable in exactly i moves and cannot be reached in fewer. 
 
-This list should correspond to the total column in the linked table.
-Note this total is the amount of cubes reachable in exactly n moves,
-so each entry in our list is equal to the sum of the total column up to n. **)
+This list should correspond to the total column in the linked table. **)
 
 Compute perm_n 7 [solved'] init_tree.
 
