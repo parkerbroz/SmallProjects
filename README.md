@@ -10,6 +10,17 @@ The TLDR about what I did here is:
 
 And I ended up with an EV of $1.17 for each $1 I traded!
 
+# rubik-tree
+There is a notion for Rubik's cubes of "God's Number" - the most moves any cube can be from the solved state. We show in rubik-tree that  for 2x2x2 cubes, God's Number is 14 when considering a quarter-turn of any face a move.
+
+I admit there is a lack of rigor in two places:
+
+I couldn't come up with a way to verify the accuracy of my simulations of manipulations of a cube aside from comparison to real-life results.
+
+You will see my argument for our construction of a proof lies outside of Coq. I took this course concurrently with Basic Algebra I, so my familiarity with the group theory ideas we would need for a concrete proof is weak to begin with, and implementing such a proof in Coq seemed beyond my ability. As such, it is a little hand-wavy.
+
+Despite these weaknesses, I enjoyed playing with the abstraction between interpreting a cube state as a list of transformations and as an explicit combination of colors during the proof of inversion_solves and it's supporting lemmas. I also found some satisfaction in designing the color_tree data structure. I don't think I've used such a data structure before, but it greatly improved the runtime of perm_n. Before its implementation, (perm_n 9 x x) failed to complete in 12 hours. After, (perm_n 15 [solved'] init_tree) runs in around half an hour.
+
 # constant-fib
 An $O(1)$ algorithm for finding the $n$-th Fibonacci number. This is an interesting application of some concepts I learned in my Abstract Linear Algebra course. Essentially, iterating from one Fibonacci number to the next can be represented as matrix multiplication. We can use some linear algebra tricks to make this computation
 very quick. 
