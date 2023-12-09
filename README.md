@@ -15,9 +15,9 @@ There is a notion for Rubik's cubes of "God's Number" - the most moves any cube 
 
 I admit there is a lack of rigor in two places:
 
-I couldn't come up with a way to verify the accuracy of my simulations of manipulations of a cube aside from comparison to real-life results.
+- I couldn't come up with a way to verify the accuracy of my simulations of manipulations of a cube aside from comparison to real-life results.
 
-You will see my argument for our construction of a proof lies outside of Coq. I took this course concurrently with Basic Algebra I, so my familiarity with the group theory ideas we would need for a concrete proof is weak to begin with, and implementing such a proof in Coq seemed beyond my ability. As such, it is a little hand-wavy.
+- You will see my argument for our construction of a proof lies outside of Coq. I took this course concurrently with Basic Algebra I, so my familiarity with the group theory ideas we would need for a concrete proof is weak to begin with, and implementing such a proof in Coq seemed beyond my ability. As such, it is a little hand-wavy.
 
 Despite these weaknesses, I enjoyed playing with the abstraction between interpreting a cube state as a list of transformations and as an explicit combination of colors during the proof of inversion_solves and it's supporting lemmas. I also found some satisfaction in designing the color_tree data structure. I don't think I've used such a data structure before, but it greatly improved the runtime of perm_n. Before its implementation, (perm_n 9 x x) failed to complete in 12 hours. After, (perm_n 15 [solved'] init_tree) runs in around half an hour.
 
